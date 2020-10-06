@@ -310,12 +310,17 @@ video::before{
 	display: none;
 	}
 
+.exercise {
+	
+}
+
 .workoutPic{
 	width: 500px;	
 }
 
 .move {
 	background-color: var(--accent);
+	height: 100%;
 }
 
 .moveDesc {
@@ -583,6 +588,7 @@ video::before{
 	left: 0;
 	background-color: rgba(0, 0, 0, 0.5);
 	display: none;
+	z-index:2;
   }
   #list {
 	width: 100%;
