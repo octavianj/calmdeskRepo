@@ -1,4 +1,89 @@
 
+/* Timer */
+
+/*
+$('.begin').click(function (){
+	var bgnwrkt = document.getElementsByClassName('begin');
+	var minutesLabel = document.getElementById("minutes");
+	var secondsLabel = document.getElementById("seconds");
+	var totalSeconds = 0;
+
+	if (bgnwrkt.innerHTML === 'Begin Workout')
+	{
+		$('.timer').toggle();
+		bgnwrkt.innerHTML = 'Stop Workout';
+
+		var handle = setInterval(setTime, 1000);
+	
+		function setTime() {
+			++totalSeconds;
+			secondsLabel.innerHTML = pad(totalSeconds % 60);
+			minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+		}
+		
+		function pad(val) {
+			var valString = val + "";
+			if (valString.length < 2) {
+			return "0" + valString;
+			} else {
+			return valString;
+			}
+			}
+
+			
+	}	else {
+		$('.timer').toggle();
+		bgnwrkt.innerHTML = 'Begin Workout';
+		clearInterval(handle);
+		handle = 0;
+		}
+			
+});
+*/
+
+window.onload = () => {
+	let minute = 0;
+	let seconds = 0;
+	let totalSeconds = 0;
+	
+	let intervalId = null;
+	
+	function startTimer() {
+	  ++totalSeconds;
+	  hour = Math.floor(totalSeconds /3600);
+	  minute = Math.floor((totalSeconds - hour*3600)/60);
+	  seconds = totalSeconds - (hour*3600 + minute*60);
+  
+	  document.getElementById("minutes").innerHTML =pad(parseInt(totalSeconds / 60));
+	  document.getElementById("seconds").innerHTML =pad(totalSeconds % 60);
+	}
+  
+	document.getElementById('start-btn').addEventListener('click', () => {
+	  intervalId = setInterval(startTimer, 1000);
+	})
+	
+	document.getElementById('stop-btn').addEventListener('click', () => {
+	  if (intervalId)
+		clearInterval(intervalId);
+	});
+	
+	 
+	document.getElementById('reset-btn').addEventListener('click', () => {
+	   totalSeconds = 0;
+	   document.getElementById("minutes").innerHTML = pad(parseInt(totalSeconds / 60));
+	   document.getElementById("seconds").innerHTML = pad(totalSeconds % 60);
+	});
+  }
+
+  function pad(val) {
+	var valString = val + "";
+	if (valString.length < 2) {
+	return "0" + valString;
+	} else {
+	return valString;
+	}
+	}
+
 function scroll_to(clicked_link, nav_height) {
 	var element_class = clicked_link.attr('href').replace('#', '.');
 	var scroll_to = 0;
@@ -106,6 +191,13 @@ jQuery(window).load(function() {
 	$(".testimonial-image img").attr("style", "width: auto !important; height: auto !important;");
 	
 });
+
+
+
+
+
+
+
 
 
 
